@@ -22,5 +22,5 @@ for i in range(0, 100):
 
 mean = statistics.mean(dataset)
 stdev = statistics.stdev(data)
-print("Mean of 1000 vaules: ", mean)
+print("Mean of 100 vaules: ", mean)
 print("Standard deviation of 1000 vaules: ", stdev)
