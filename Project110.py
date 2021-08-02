@@ -15,7 +15,7 @@ population_stdev = statistics.stdev(data)
 print("Standard Deviation: ", population_stdev)
 
 dataset = []
-for i in range(0, 1000):
+for i in range(0, 100):
     random_index = random.randint(0, len(data))
     value = data[random_index]
     dataset.append(value)
