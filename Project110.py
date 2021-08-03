@@ -33,6 +33,6 @@ def setup():
         set_of_means= random_set_of_mean(10)
         mean_list.append(set_of_means)
     show_fig(mean_list)
-    print("Sampling Mean:- ", statistics.mean(mean_list))
+    print("Sampling Mean: ", statistics.mean(mean_list))
 
 setup()
