@@ -1,26 +1,38 @@
-import statistics
 import pandas as pd
-import plotly.express as px
-import math
-import random
 import plotly.figure_factory as ff
+import statistics
+import random
+import csv
 
-df = pd.read_csv("P110data.csv")
+df = pd.read_csv("medium_data.csv")
 data = df["reading_time"].tolist()
-fig = ff.create_distplot([data], ["reading_time"], show_hist = False)
 
-population_mean = statistics.mean(data)
-print("Mean: ", population_mean)
-population_stdev = statistics.stdev(data)
-print("Standard Deviation: ", population_stdev)
+fig = ff.create_distplot([data], ["reading_time"], show_hist=False)
+fig.show()
 
-dataset = []
-for i in range(0, 100):
-    random_index = random.randint(0, len(data))
-    value = data[random_index]
-    dataset.append(value)
+print("Population Mean: ", statistics.mean(data))
 
-mean = statistics.mean(dataset)
-stdev = statistics.stdev(data)
-print("Mean of 100 vaules: ", mean)
-print("Standard deviation of 1000 vaules: ", stdev)
+def random_set_of_mean(counter):
+    dataset = []
+    for i in range(0, counter):
+        random_index= random.randint(0,len(data))
+        value = data[random_index]
+        dataset.append(value)
+    mean = statistics.mean(dataset)
+    return mean
+
+def show_fig(mean_list):
+    df = mean_list
+    
+    fig = ff.create_distplot([df], ["reading_time"], show_hist=False)
+    fig.show()
+
+def setup():
+    mean_list = []
+    for i in range(0,100):
+        set_of_means= random_set_of_mean(10)
+        mean_list.append(set_of_means)
+    show_fig(mean_list)
+    print("Sampling Mean:- ", statistics.mean(mean_list))
+
+setup()
